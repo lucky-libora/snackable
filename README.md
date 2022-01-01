@@ -50,6 +50,8 @@ $ npm run start:prod
 
 ## Endpoints 
 
+Swagger is available on `/swagger`.
+
 `POST /auth/login` - checks user credentials and respond with jwt access token
 
 All endpoints bellow requires bearer `Authorization` header. 
