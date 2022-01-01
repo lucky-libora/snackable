@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { FileProcessingProxyService } from './file-processing/file.processing.proxy.service';
+import { FilesService } from './files/files.service';
 
 @Module({
-  imports: [],
+  imports: [ConfigModule.forRoot()],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [FileProcessingProxyService, FilesService],
 })
 export class AppModule {}
