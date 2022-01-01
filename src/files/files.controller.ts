@@ -2,6 +2,7 @@ import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { FilesService } from './files.service';
 import { GetFileDetailsRes } from '../file-processing/file.processing.types';
 import { JwtAuthGuard } from '../auth/jwt.auth.guard';
+import { GetFileMetadataParams } from './dto/get.file.metadata.params';
 
 @Controller('/files')
 @UseGuards(JwtAuthGuard)
@@ -14,7 +15,7 @@ export class FilesController {
   }
 
   @Get('/:fileId')
-  async getHello(@Param('fileId') fileId: string): Promise<GetFileDetailsRes> {
+  async getFileMetadata(@Param() { fileId }: GetFileMetadataParams): Promise<GetFileDetailsRes> {
     return await this.filesService.getFileWithMetadata(fileId);
   }
 }
