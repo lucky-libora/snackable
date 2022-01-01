@@ -47,21 +47,17 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Endpoints 
+
+`POST /auth/login` - checks user credentials and respond with jwt access token
+
+All endpoints bellow requires bearer `Authorization` header. 
+
+`POST /auth/renew` - renew access token
 
 `GET /files` - responds with processed file list
 
 `GET /files/:fileId` - responds with file and its segment metadata
+
+
