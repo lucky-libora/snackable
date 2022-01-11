@@ -3,8 +3,14 @@ import { ConfigService } from '@nestjs/config';
 import got from 'got';
 import { GetAllFilesRes, GetFileDetailsRes, GetFileSegmentsRes } from './file.processing.types';
 
+export type IFileProcessingProxyService = {
+  getAllFilesPaginated(offset?: number, limit?: number): Promise<GetAllFilesRes>;
+  getFileDetails(fileId: string): Promise<GetFileDetailsRes>;
+  getFileSegments(fileId: string): Promise<GetFileSegmentsRes>;
+};
+
 @Injectable()
-export class FileProcessingProxyService {
+export class FileProcessingProxyService implements IFileProcessingProxyService {
   private get baseUrl(): string {
     return this.configService.get('FILE_PROCESSING_BASE_URL');
   }
